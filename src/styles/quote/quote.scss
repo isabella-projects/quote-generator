@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
+
+@import '../variables/mixins';
+@import '../variables/vars';
+
+.quote-header {
+    position: absolute;
+    top: 2%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__text {
+        display: block;
+        width: 70%;
+        height: auto;
+    }
+}
+
+.quote-container {
+    width: auto;
+    max-width: 1140px;
+    padding: 40px 30px;
+
+    border-radius: $container-border-radius;
+    box-shadow: $container-box-shadow;
+    background-color: $container-background;
+
+    &__text {
+        display: flex;
+        gap: 1rem;
+        @include fluid-font(1.5rem, calc(0.3045rem + 3.4750vw), 3rem);
+
+        .fa-quote-left::before {
+            @include fluid-font(1.825rem, calc(0.3045rem + 5.4750vw), 3.5rem);
+        }
+    }
+
+
+    &__author {
+        font-family: 'Montserrat';
+        font-style: italic;
+        font-weight: 400;
+        @include fluid-font(1.325rem, calc(0.3045rem + 3.2450vw), 2rem);
+
+        margin: 1.625rem 0;
+    }
+}
+
+.footer {
+    height: 4.5rem;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(7, 7, 7, 0.979);
+    font-family: 'Viga', -apple-system, sans-serif;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__author,
+    &__copyright {
+        color: #fff;
+
+        a {
+            color: burlywood;
+            text-decoration: none;
+
+            &:hover {
+                color: #c59454;
+            }
+        }
+    }
+}

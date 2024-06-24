@@ -1,0 +1,23 @@
+@media screen and (max-width: 1150px) {
+    .quote-container {
+        margin: auto 20px;
+        padding: 20px 15px;
+    }
+
+    .button-container {
+        button {
+            font-size: .925rem;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .quote-header {
+        top: 10%;
+
+        &__text {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

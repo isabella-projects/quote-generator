@@ -1,0 +1,3 @@
+@mixin fluid-font($min, $preferred, $max) {
+    font-size: clamp(#{$min}, calc(#{$preferred}), #{$max});
+}
