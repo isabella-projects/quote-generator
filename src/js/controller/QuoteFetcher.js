@@ -7,6 +7,7 @@ export class QuoteFetcher {
         this.quoteElement = document.getElementById('quote');
         this.authorElement = document.getElementById('author');
         this.btn = document.getElementById('new-quote');
+        this.loader = document.getElementById('loader');
 
         this._init();
     }
@@ -18,6 +19,8 @@ export class QuoteFetcher {
     async fetchQuote() {
         const API = 'https://api.api-ninjas.com/v1/quotes';
         const API_KEY = import.meta.env.VITE_API_KEY;
+
+        this.toggleLoading(true);
 
         try {
             const { data } = await axios.get(API, {
@@ -32,7 +35,13 @@ export class QuoteFetcher {
             this.updateQuoteUI();
         } catch (error) {
             console.log(`Error while fetching data: ${error}`);
+        } finally {
+            this.toggleLoading(false);
         }
+    }
+
+    async fetchAndDisplayQuote() {
+        await this.fetchQuote();
     }
 
     updateQuoteUI() {
@@ -40,7 +49,8 @@ export class QuoteFetcher {
         this.authorElement.textContent = `— ${this.currentQuote.author}`;
     }
 
-    async fetchAndDisplayQuote() {
-        await this.fetchQuote();
+    toggleLoading(isLoading) {
+        this.loader.hidden = !isLoading;
+        this.quoteContainer.hidden = isLoading;
     }
 }
